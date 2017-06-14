@@ -13,6 +13,7 @@ import com.facebook.drawee.drawable.ScalingUtils;
 import com.facebook.drawee.generic.GenericDraweeHierarchy;
 import com.facebook.drawee.generic.GenericDraweeHierarchyBuilder;
 import com.facebook.drawee.interfaces.DraweeController;
+import com.facebook.imagepipeline.request.ImageRequest;
 
 import java.util.List;
 
@@ -21,7 +22,7 @@ import java.util.List;
  */
 
 public class LargeImageGalleryAdapter extends PagerAdapter {
-    List<String> mData;
+    List<ImageUri> mData;
     ZoomableDraweeView[] mImageViewList;
 
     private int mPlaceholderImageResId;
@@ -32,17 +33,17 @@ public class LargeImageGalleryAdapter extends PagerAdapter {
         this(null);
     }
 
-    public LargeImageGalleryAdapter(List<String> data){
+    public LargeImageGalleryAdapter(List<ImageUri> data){
         setData(data);
     }
 
-    public void setData(List<String> imageUrls){
-        setData(imageUrls, 0, 0);
+    public void setData(List<ImageUri> imageUris){
+        setData(imageUris, 0, 0);
     }
 
-    public void setData(List<String> imageUrls, @DrawableRes int placeholderImageResId, @DrawableRes int failureImageResId){
-        if(imageUrls != null){
-            mData = imageUrls;
+    public void setData(List<ImageUri> imageUris, @DrawableRes int placeholderImageResId, @DrawableRes int failureImageResId){
+        if(imageUris != null){
+            mData = imageUris;
             mImageViewList = new ZoomableDraweeView[mData.size()];
         }
         mPlaceholderImageResId = placeholderImageResId;
@@ -87,7 +88,8 @@ public class LargeImageGalleryAdapter extends PagerAdapter {
                     }
                 });
                 DraweeController controller = Fresco.newDraweeControllerBuilder()
-                        .setUri(mData.get(position % mData.size()))
+                        .setLowResImageRequest(ImageRequest.fromUri(mData.get(position % mData.size()).getLowUri()))
+                        .setImageRequest(ImageRequest.fromUri(mData.get(position % mData.size()).getHighUri()))
                         .build();
                 zoomableDraweeView.setController(controller);
                 GenericDraweeHierarchyBuilder builder =

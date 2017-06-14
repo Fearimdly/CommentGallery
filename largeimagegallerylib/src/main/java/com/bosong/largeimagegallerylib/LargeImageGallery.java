@@ -76,10 +76,10 @@ public class LargeImageGallery extends FrameLayout {
         mViewPager.setAdapter(mAdapter);
     }
 
-    public void setData(List<String> urls){
-        if(urls != null){
-            mAdapter.setData(urls, R.drawable.placeholder, R.drawable.placeholder);
-            if(urls != null && urls.size() > 0 && mOnSelectionChangedListener != null){
+    public void setData(List<ImageUri> imageUris){
+        if(imageUris != null){
+            mAdapter.setData(imageUris, R.drawable.placeholder, R.drawable.placeholder);
+            if(imageUris != null && imageUris.size() > 0 && mOnSelectionChangedListener != null){
                 mOnSelectionChangedListener.onSelectionChanged(LAST_INDEX_DEFAULT_VALUE, CURRENT_INDEX_DEFAULT_VALUE);
             }
             mAdapter.notifyDataSetChanged();

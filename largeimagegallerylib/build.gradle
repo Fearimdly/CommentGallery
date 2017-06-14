@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'maven'
 
 android {
     compileSdkVersion 25
@@ -29,4 +30,13 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.2.0'
     testCompile 'junit:junit:4.12'
     compile project(':frescozoomablelib')
+}
+
+uploadArchives {
+    repositories.mavenDeployer {
+        repository(url: "file://" + file("maven"))
+        pom.groupId = "com.worktile"
+        pom.artifactId = 'largeimagegallery'
+        pom.version = '1.0.2'
+    }
 }
