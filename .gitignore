@@ -46,3 +46,5 @@ build/
 
 # User-specific configurations
 *.iml
+
+test/

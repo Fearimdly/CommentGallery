@@ -2,6 +2,7 @@ package com.bosong.largeimagegallerylib;
 
 import android.content.Context;
 import android.support.annotation.AttrRes;
+import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
@@ -77,14 +78,17 @@ public class LargeImageGallery extends FrameLayout {
     }
 
     public void setData(List<ImageUri> imageUris){
+        setData(imageUris, R.drawable.placeholder, R.drawable.placeholder);
+    }
+
+    public void setData(List<ImageUri> imageUris, int placeholderResId, int failureResId) {
         if(imageUris != null){
-            mAdapter.setData(imageUris, R.drawable.placeholder, R.drawable.placeholder);
+            mAdapter.setData(imageUris, placeholderResId, failureResId);
             if(imageUris != null && imageUris.size() > 0 && mOnSelectionChangedListener != null){
                 mOnSelectionChangedListener.onSelectionChanged(LAST_INDEX_DEFAULT_VALUE, CURRENT_INDEX_DEFAULT_VALUE);
             }
             mAdapter.notifyDataSetChanged();
         }
-
     }
 
     public void setCurrentItem(int position){

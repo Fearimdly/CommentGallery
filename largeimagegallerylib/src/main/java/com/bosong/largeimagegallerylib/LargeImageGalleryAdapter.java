@@ -1,5 +1,6 @@
 package com.bosong.largeimagegallerylib;
 
+import android.graphics.Color;
 import android.support.annotation.DrawableRes;
 import android.support.v4.view.PagerAdapter;
 import android.view.MotionEvent;
@@ -9,6 +10,7 @@ import com.bosong.frescozoomablelib.zoomable.DefaultZoomableController;
 import com.bosong.frescozoomablelib.zoomable.DoubleTapGestureListener;
 import com.bosong.frescozoomablelib.zoomable.ZoomableDraweeView;
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.drawee.drawable.ProgressBarDrawable;
 import com.facebook.drawee.drawable.ScalingUtils;
 import com.facebook.drawee.generic.GenericDraweeHierarchy;
 import com.facebook.drawee.generic.GenericDraweeHierarchyBuilder;
@@ -95,7 +97,13 @@ public class LargeImageGalleryAdapter extends PagerAdapter {
                 GenericDraweeHierarchyBuilder builder =
                         new GenericDraweeHierarchyBuilder(container.getResources());
                 GenericDraweeHierarchy hierarchy = builder
-                        .setFadeDuration(300).setActualImageScaleType(ScalingUtils.ScaleType.FIT_CENTER)
+                        .setFadeDuration(300)
+                        .setProgressBarImage(new CircleProgress.Builder()
+                                .setTextShow(false)
+                                .setStyle(CircleProgress.CircleStyle.FAN)
+                                .setGradientType(CircleProgress.GradientType.SWEEP)
+                                .build())
+                        .setActualImageScaleType(ScalingUtils.ScaleType.FIT_CENTER)
                         .build();
                 if(mPlaceholderImageResId > 0){
                     hierarchy.setPlaceholderImage(mPlaceholderImageResId, ScalingUtils.ScaleType.FIT_CENTER);
