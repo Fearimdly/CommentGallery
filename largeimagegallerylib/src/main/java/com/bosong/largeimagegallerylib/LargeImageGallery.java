@@ -8,8 +8,11 @@ import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
+
+import com.facebook.drawee.backends.pipeline.Fresco;
 
 import java.util.List;
 

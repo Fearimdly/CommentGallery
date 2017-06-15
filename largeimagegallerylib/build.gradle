@@ -6,7 +6,7 @@ android {
     buildToolsVersion "25.0.2"
 
     defaultConfig {
-        minSdkVersion 9
+        minSdkVersion 14
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
@@ -30,6 +30,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.2.0'
     testCompile 'junit:junit:4.12'
     compile project(':frescozoomablelib')
+    compile 'com.afollestad.material-dialogs:core:0.9.4.5'
 }
 
 uploadArchives {
@@ -37,6 +38,6 @@ uploadArchives {
         repository(url: "file://" + file("maven"))
         pom.groupId = "com.worktile"
         pom.artifactId = 'largeimagegallery'
-        pom.version = '1.0.3'
+        pom.version = '1.0.4'
     }
 }
