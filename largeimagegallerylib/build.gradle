@@ -29,14 +29,8 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.2.0'
     testCompile 'junit:junit:4.12'
-    compile 'com.github.ibosong.CommentGallery:frescozoomablelib:1.0.1'
+    compile 'com.worktile:zoomabledrawee:1.0.2'
     compile 'com.afollestad.material-dialogs:core:0.9.4.5'
-
-    configurations.all {
-        resolutionStrategy {
-            force 'com.facebook.fresco:fresco:1.3.0', 'com.facebook.fresco:animated-gif:1.3.0'
-        }
-    }
 }
 
 uploadArchives {
@@ -44,6 +38,6 @@ uploadArchives {
         repository(url: "file://" + file("maven"))
         pom.groupId = "com.worktile"
         pom.artifactId = 'largeimagegallery'
-        pom.version = '1.0.5'
+        pom.version = '1.0.5.1'
     }
 }
