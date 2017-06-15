@@ -38,6 +38,6 @@ uploadArchives {
         repository(url: "file://" + file("maven"))
         pom.groupId = "com.worktile"
         pom.artifactId = 'largeimagegallery'
-        pom.version = '1.0.4'
+        pom.version = '1.0.5'
     }
 }
